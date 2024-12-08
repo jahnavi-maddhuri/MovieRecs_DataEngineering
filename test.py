@@ -7,7 +7,7 @@ movie_pd = pd.DataFrame()
 # 47400
 import requests
 
-for page in range(490, 500):
+for page in range(1, 500):
     url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page={page}&sort_by=popularity.desc"
     headers = {
         "accept": "application/json",
