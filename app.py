@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template_string
 import requests
 from datetime import datetime
+from mylib.queries import query  # import query functions that we make
 
 app = Flask(__name__)
 
@@ -15,8 +16,10 @@ HTML_TEMPLATE = """
     <form method="POST" action="/">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
-        <label for="birthdate">Birthdate (YYYY-MM-DD):</label>
-        <input type="text" id="birthdate" name="birthdate" required><br><br>
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required><br><br>
+        <label for="mood">Mood:</label>
+        <input type="text" id="mood" name="mood" required><br><br>
         <button type="submit">Submit</button>
     </form>
 </body>
@@ -25,21 +28,21 @@ HTML_TEMPLATE = """
 
 
 @app.route("/", methods=["GET", "POST"])
+# I think based on what the user inputs, we call our query functions using probably variables based on what the user requests. then get the output of the query and display it here?
 def say_hello():
     if request.method == "POST":
         # Get data from form submission
+        genre = request.form.get("genre")
+        mood = request.form.get("mood")
         name = request.form.get("name")
-        birthdate = request.form.get("birthdate")
         try:
             # Parse birthdate
-            birth_date_obj = datetime.strptime(birthdate, "%Y-%m-%d")
-            month = birth_date_obj.month
-            day = birth_date_obj.day
+            result = query(genre, mood)
         except ValueError:
-            return "Invalid date format! Please use YYYY-MM-DD."
+            return "Invalid genre/does not exist"
 
         # Fetch fun fact
-        fact_url = f"http://numbersapi.com/{month}/{day}/date"
+        '''fact_url = f"http://numbersapi.com/{month}/{day}/date"
         try:
             response = requests.get(fact_url)
             if response.status_code == 200:
@@ -47,10 +50,10 @@ def say_hello():
             else:
                 fun_fact = "Could not retrieve a fun fact at this time."
         except Exception as e:
-            fun_fact = f"Error fetching fun fact: {e}"
+            fun_fact = f"Error fetching fun fact: {e}"'''
 
         # Return response
-        return f"<h1>Hi {name}!</h1><p>Here's a fun fact about your birthdate:<br>{fun_fact}</p>"
+        return f"<h1>Hi {name}!</h1><p>Here's your movie rec:<br>{result}</p>"
 
     # Show the input form
     return render_template_string(HTML_TEMPLATE)
