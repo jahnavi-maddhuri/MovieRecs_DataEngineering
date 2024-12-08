@@ -10,3 +10,4 @@ requests
 datetime
 #web
 #fastapi == 0.85.0
+flask==3.1.0
