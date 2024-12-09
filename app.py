@@ -47,11 +47,11 @@ def query(genre, mood):
                     ORDER BY vote_average DESC
                     LIMIT 3;
                     """ 
-        c.execute(a_query, (f"%{mood}%", genre))
-        result = c.fetchall()
-        print("Query Output: \n")
-        print(result)
-        c.close()
+            c.execute(a_query, (f"%{mood}%", genre))
+            result = c.fetchall()
+            print("Query Output: \n")
+            print(result)
+            c.close()
     return result
 
 
