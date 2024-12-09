@@ -1,12 +1,18 @@
-"""Query the database"""
+"""Query the database
 
 import os
 from databricks import sql
 from dotenv import load_dotenv
-
-complex_query = """"""  # Thinking we do something that would depend on what the user inputs / requests
+"""
+"""a_query = 
+                    SELECT original_title, vote_average
+                    FROM movies
+                    WHERE overview LIKE ? AND genre=?
+                    ORDER BY vote_average DESC
+                    LIMIT 3;
+                    """  # Thinking we do something that would depend on what the user inputs / requests
 # order by popularity of vote average by default? or maybe release date?
-
+"""
 
 def query(a_query):
     load_dotenv()
@@ -19,9 +25,10 @@ def query(a_query):
         access_token=access_token,
     ) as connection:
         c = connection.cursor()
-        c.execute(a_query)
+        c.execute(a_query, (f"%{mood}%", genre))
         result = c.fetchall()
         print("Query Output: \n")
         print(result)
         c.close()
     return "Successfully queried"
+"""
