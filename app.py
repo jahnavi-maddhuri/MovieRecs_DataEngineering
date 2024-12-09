@@ -1,7 +1,15 @@
 from flask import Flask, request, render_template_string # import query functions that we make
 from dotenv import load_dotenv
-from databricks import sql
 import os
+
+import traceback
+try:
+    import databricks.sql as sql
+except Exception as e:
+    print("Error while importing databricks.sql:")
+    print(e)
+    traceback.print_exc()
+
 
 app = Flask(__name__)
 
@@ -97,4 +105,4 @@ def say_hello():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=80,debug=True)
