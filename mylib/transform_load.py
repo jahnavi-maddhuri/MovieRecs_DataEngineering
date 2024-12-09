@@ -32,10 +32,11 @@ def load(dataset="data/movies.csv"):
                     original_title STRING,
                     popularity DOUBLE,
                     poster_path STRING,
-                    release_date STRING
+                    release_date STRING,
                     title STRING,
                     vote_average DOUBLE,
-                    vote_count INT
+                    vote_count INT,
+                    genre_names STRING
                 )
             """
             )
@@ -44,8 +45,55 @@ def load(dataset="data/movies.csv"):
         if not result:
 
             for _, row in df.iterrows():
-                convert = tuple(row)
-                c.execute(f"INSERT INTO movie_recs_final VALUES {convert}")
+                genre_ids_str = (
+                    ",".join(map(str, row["genre_ids"].split(",")))
+                    if "genre_ids" in row
+                    else ""
+                )
+                genre_names_str = (
+                    ",".join(map(str, row["genre_names"].split(",")))
+                    if "genre_names" in row
+                    else ""
+                )
+
+                # Prepare parameters for insertion
+                params = (
+                    bool(row["adult"]),
+                    row["backdrop_path"],
+                    genre_ids_str,
+                    int(row["id"]),
+                    row["original_language"],
+                    row["original_title"],
+                    float(row["popularity"]),
+                    row["poster_path"],
+                    row["release_date"],
+                    row["title"],
+                    float(row["vote_average"]),
+                    int(row["vote_count"]),
+                    genre_names_str,
+                )
+
+                # Use parameterized queries to safely insert data
+                c.execute(
+                    """
+                    INSERT INTO movie_recs_final (
+                        adult, 
+                        backdrop_path, 
+                        genre_ids, 
+                        id, 
+                        original_language, 
+                        original_title, 
+                        popularity, 
+                        poster_path, 
+                        release_date, 
+                        title, 
+                        vote_average, 
+                        vote_count, 
+                        genre_names
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                    params,
+                )
         c.close()
     print("successfully loaded data into Databricks")
     return "success"

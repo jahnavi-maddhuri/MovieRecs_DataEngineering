@@ -29,4 +29,4 @@ ENV FLASK_APP=app.py
 
 #a more secure option would be to specify the exact IP you plan to use 
 # (e.g.API gateway interface)
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]

@@ -1,8 +1,13 @@
-from flask import Flask, request, render_template_string # import query functions that we make
+from flask import (
+    Flask,
+    request,
+    render_template_string,
+)  # import query functions that we make
 from dotenv import load_dotenv
 import os
 
 import traceback
+
 try:
     import databricks.sql as sql
 except Exception as e:
@@ -35,8 +40,6 @@ HTML_TEMPLATE = """
 """
 
 
-
-
 def query(genre, mood):
     load_dotenv()
     server_h = os.getenv("SERVER_HOSTNAME")
@@ -50,18 +53,17 @@ def query(genre, mood):
         with connection.cursor() as c:
             a_query = """
                     SELECT original_title, vote_average
-                    FROM movies
-                    WHERE overview LIKE ? AND genre=?
+                    FROM movie_recs
+                    WHERE overview LIKE ? AND genre_names LIKE ?
                     ORDER BY vote_average DESC
                     LIMIT 3;
-                    """ 
-            c.execute(a_query, (f"%{mood}%", genre))
+                    """
+            c.execute(a_query, (f"%{mood}%", f"%{genre}%"))
             result = c.fetchall()
             print("Query Output: \n")
             print(result)
             c.close()
     return result
-
 
 
 # I think based on what the user inputs, we call our query functions using probably variables based on what the user requests. then get the output of the query and display it here?
@@ -74,14 +76,16 @@ def say_hello():
         # Get data from form submission
         try:
             # Parse birthdate
-             # Thinking we do something that would depend on what the user inputs / requests
-# order by popularity of vote average by default? or maybe release date?
+            # Thinking we do something that would depend on what the user inputs / requests
+            # order by popularity of vote average by default? or maybe release date?
             result = query(genre, mood)
             if result:
-                movies = "<br>".join([f"{movie[0]} (Rating: {movie[1]})" for movie in result])
+                movies = "<br>".join(
+                    [f"{movie[0]} (Rating: {movie[1]})" for movie in result]
+                )
             else:
                 movies = "No movies found"
-            #Return result
+            # Return result
             return f"<h1>Hi {name}!</h1><p>Here are your movie recommendations:<br>{movies}</p>"
         except Exception as e:
             return f"<h1>Error:</h1><p>{e}</p>"
@@ -105,4 +109,4 @@ def say_hello():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=80,debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
