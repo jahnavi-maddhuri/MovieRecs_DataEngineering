@@ -34,8 +34,8 @@ jobs:
 
     - name: Build and Push Docker image
       run: |
-        docker build -t <your-repo-name>:latest .
-        docker tag <your-repo-name>:latest <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/<your-repo-name>:latest
-        docker push <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/<your-repo-name>:latest
+        docker build -t MovieRecs_DataEngineering:latest .
+        docker tag MovieRecs_DataEngineering:latest ${{ secrets.AWS_ID}}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
+        docker push ${{ secrets.AWS_ID}}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
 
     
