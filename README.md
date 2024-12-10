@@ -1,5 +1,5 @@
 # MovieRecs_DataEngineering
-
+[![CICD](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml)
 
 ## Workflow
 * Extract data using API from movie site and load as a table into Databricks
