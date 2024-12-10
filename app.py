@@ -1,8 +1,13 @@
-from flask import Flask, request, render_template_string # import query functions that we make
+from flask import (
+    Flask,
+    request,
+    render_template_string,
+)  # import query functions that we make
 from dotenv import load_dotenv
 import os
 
 import traceback
+
 try:
     import databricks.sql as sql
 except Exception as e:
@@ -18,23 +23,108 @@ HTML_TEMPLATE = """
 <html>
 <head>
     <title>Movie Request Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #feffdf;
+            color: #668ba4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #dde0ab;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #668ba4;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #668ba4;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus, button:focus {
+            outline: none;
+            border-color: #97cba9;
+        }
+
+        button {
+            background-color: #97cba9;
+            color: #feffdf;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #668ba4;
+            color: #feffdf;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter Your Details</h1>
-    <form method="POST" action="/">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" required><br><br>
-        <label for="mood">Mood:</label>
-        <input type="text" id="mood" name="mood" required><br><br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="form-container">
+        <h1>Movie Request Form</h1>
+        <form method="POST" action="/">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="genre">Genre:</label>
+            <select id="genre" name="genre" required>
+                <option value="" disabled selected>Select a genre</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Animation">Animation</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Crime">Crime</option>
+                <option value="Documentary">Documentary</option>
+                <option value="Drama">Drama</option>
+                <option value="Family">Family</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="History">History</option>
+                <option value="Horror">Horror</option>
+                <option value="Music">Music</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="TV Movie">TV Movie</option>
+                <option value="Thriller">Thriller</option>
+                <option value="War">War</option>
+                <option value="Western">Western</option>
+            </select>
+
+            <label for="mood">Mood:</label>
+            <input type="text" id="mood" name="mood" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
+
 """
-
-
 
 
 def query(genre, mood):
@@ -50,18 +140,17 @@ def query(genre, mood):
         with connection.cursor() as c:
             a_query = """
                     SELECT original_title, vote_average
-                    FROM movies
-                    WHERE overview LIKE ? AND genre_ids=?
+                    FROM movie_recs
+                    WHERE overview LIKE ? AND genre_names LIKE ?
                     ORDER BY vote_average DESC
                     LIMIT 3;
-                    """ 
-            c.execute(a_query, (f"%{mood}%", genre))
+                    """
+            c.execute(a_query, (f"%{mood}%", f"%{genre}%"))
             result = c.fetchall()
             print("Query Output: \n")
             print(result)
             c.close()
     return result
-
 
 
 # I think based on what the user inputs, we call our query functions using probably variables based on what the user requests. then get the output of the query and display it here?
@@ -74,14 +163,16 @@ def say_hello():
         # Get data from form submission
         try:
             # Parse birthdate
-             # Thinking we do something that would depend on what the user inputs / requests
-# order by popularity of vote average by default? or maybe release date?
+            # Thinking we do something that would depend on what the user inputs / requests
+            # order by popularity of vote average by default? or maybe release date?
             result = query(genre, mood)
             if result:
-                movies = "<br>".join([f"{movie[0]} (Rating: {movie[1]})" for movie in result])
+                movies = "<br>".join(
+                    [f"{movie[0]} (Rating: {movie[1]})" for movie in result]
+                )
             else:
                 movies = "No movies found"
-            #Return result
+            # Return result
             return f"<h1>Hi {name}!</h1><p>Here are your movie recommendations:<br>{movies}</p>"
         except Exception as e:
             return f"<h1>Error:</h1><p>{e}</p>"
@@ -105,4 +196,4 @@ def say_hello():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=80,debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
