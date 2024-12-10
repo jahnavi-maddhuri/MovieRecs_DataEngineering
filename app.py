@@ -51,7 +51,7 @@ def query(genre, mood):
             a_query = """
                     SELECT original_title, vote_average
                     FROM movies
-                    WHERE overview LIKE ? AND genre=?
+                    WHERE overview LIKE ? AND genre_ids=?
                     ORDER BY vote_average DESC
                     LIMIT 3;
                     """ 
