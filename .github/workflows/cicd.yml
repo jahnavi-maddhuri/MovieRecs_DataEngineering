@@ -29,6 +29,6 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t movierecs_dataengineering:latest .
-        docker tag movierecs_dataengineering:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movierecs_dataengineering:latest
-        docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movierecs_dataengineering:latest
+        docker build -t movie-recs:latest .
+        docker tag movie-recs:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
+        docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
