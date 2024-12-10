@@ -246,11 +246,9 @@ def say_hello():
             # order by popularity of vote average by default? or maybe release date?
             result = query(genre, mood)
             if result:
-                movies = "<br>".join(
-                    [f"{movie[0]} (Rating: {movie[1]})" for movie in result]
-                )
+                movies = result
             else:
-                movies = [("No movies found","N/A")]
+                movies = [("No movies found", "N/A")]
             # Return result
             return render_template_string(RESULT_TEMPLATE, name=name, movies=movies)
         except Exception as e:

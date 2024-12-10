@@ -22,6 +22,7 @@
 ![alt text](images/apprunner.png)
 
 ![alt text](images/app_screenshot.png)
+![alt text](images/app_screenshot_2.png)
 
 ## Preparation and Running
 1. Open codespaces 
