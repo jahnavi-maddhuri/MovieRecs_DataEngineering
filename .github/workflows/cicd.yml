@@ -28,14 +28,22 @@ jobs:
 #        DOCKER_ID_USER: ${{ secrets.DOCKER_USERNAME }}
 #        IMAGE_NAME: movies_docker
 
+    - name: Configure AWS Credentials
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
+      run: |
+        echo "Configuring AWS credentials"
+        aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+        aws configure set default.region us-east-2
+
     - name: Log in to Amazon ECR
       run: |
-        aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${{ secrets.AWS_ID}}.dkr.ecr.us-east-2.amazonaws.com
+        aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com
 
-    - name: Build and Push Docker image
+    - name: Build and Push Docker Image
       run: |
         docker build -t MovieRecs_DataEngineering:latest .
-        docker tag MovieRecs_DataEngineering:latest ${{ secrets.AWS_ID}}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
-        docker push ${{ secrets.AWS_ID}}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
-
-    
+        docker tag MovieRecs_DataEngineering:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
+        docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/MovieRecs_DataEngineering:latest
