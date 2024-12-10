@@ -248,7 +248,7 @@ def say_hello():
             if result:
                 movies = result
             else:
-                movies = [("No movies found","N/A")]
+                movies = [("No movies found", "N/A")]
             # Return result
             return render_template_string(RESULT_TEMPLATE, name=name, movies=movies)
         except Exception as e:
