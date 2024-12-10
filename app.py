@@ -18,6 +18,85 @@ except Exception as e:
 
 app = Flask(__name__)
 
+RESULT_TEMPLATE = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #feffdf;
+            color: #668ba4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .results-container {
+            background-color: #dde0ab;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #668ba4;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #97cba9;
+            color: #feffdf;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #668ba4;
+            color: #feffdf;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #97cba9;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h1>Hi {{ name }}!</h1>
+        <p>Here are your movie recommendations:</p>
+        <ul>
+            {% for movie in movies %}
+                <li>{{ movie[0] }} (Rating: {{ movie[1] }})</li>
+            {% endfor %}
+        </ul>
+        <form action="/" method="get">
+            <button type="submit">Back to Form</button>
+        </form>
+    </div>
+</body>
+</html>
+"""
+
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -171,25 +250,11 @@ def say_hello():
                     [f"{movie[0]} (Rating: {movie[1]})" for movie in result]
                 )
             else:
-                movies = "No movies found"
+                movies = [("No movies found","N/A")]
             # Return result
-            return f"<h1>Hi {name}!</h1><p>Here are your movie recommendations:<br>{movies}</p>"
+            return render_template_string(RESULT_TEMPLATE, name=name, movies=movies)
         except Exception as e:
             return f"<h1>Error:</h1><p>{e}</p>"
-
-        # Fetch fun fact
-        '''fact_url = f"http://numbersapi.com/{month}/{day}/date"
-        try:
-            response = requests.get(fact_url)
-            if response.status_code == 200:
-                fun_fact = response.text
-            else:
-                fun_fact = "Could not retrieve a fun fact at this time."
-        except Exception as e:
-            fun_fact = f"Error fetching fun fact: {e}"'''
-
-        # Return response
-        return f"<h1>Hi {name}!</h1><p>Here's your movie rec:<br>{result}</p>"
 
     # Show the input form
     return render_template_string(HTML_TEMPLATE)

@@ -28,7 +28,7 @@ jobs:
         DOCKER_ID_USER: ${{ secrets.DOCKER_USERNAME }}
         IMAGE_NAME: movies_docker
 
-     - name: Log in to Amazon ECR
+    - name: Log in to Amazon ECR
       run: |
         aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin <your-account-id>.dkr.ecr.<your-region>.amazonaws.com
 
