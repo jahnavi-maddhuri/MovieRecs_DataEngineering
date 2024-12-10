@@ -10,6 +10,10 @@
 * Makefile - to build the Docker image, run it, and push to Docker Hub
 * github actions - yml file with Github secrets for Docker Hub in order to automate the build and run when pushed to Github
 
+
+## AWS App Runner deployment
+![alt text](images/apprunner.png)
+
 ## Preparation and Running
 1. Open codespaces 
 2. Load repo to code spaces
