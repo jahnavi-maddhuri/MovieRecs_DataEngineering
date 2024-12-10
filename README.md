@@ -24,6 +24,10 @@
 ![alt text](images/app_screenshot.png)
 ![alt text](images/app_screenshot_2.png)
 
+## Load Testing
+10000 Users and up to 497 requests per second
+![alt text](images/locust.png)
+
 ## Preparation and Running
 1. Open codespaces 
 2. Load repo to code spaces
