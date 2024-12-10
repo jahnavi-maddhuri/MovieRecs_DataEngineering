@@ -21,6 +21,8 @@
 ## AWS App Runner deployment
 ![alt text](images/apprunner.png)
 
+![alt text](images/app_screenshot.png)
+
 ## Preparation and Running
 1. Open codespaces 
 2. Load repo to code spaces
