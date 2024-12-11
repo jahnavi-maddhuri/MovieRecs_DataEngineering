@@ -1,6 +1,12 @@
 # MovieRecs_DataEngineering
 [![CICD](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml)
 
+[Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
+
+The purpose of this project is to create and use a microservice and build a web app (frontend made using Flask). The microservice was the Databricks. Performed load testing using Locust. Pushed local Docker container and image to AWS ECR and deployed on AppRunner. **make it sound better!!!!
+
+
+
 ## Workflow
 * Extract data using API from movie site and load as a table into Databricks
 * Create Docker image and container to host Flask app locally, which takes in user input for genre of movie interest and current mood
@@ -25,7 +31,7 @@
 ![alt text](images/app_screenshot_2.png)
 
 ## Load Testing
-10000 Users and up to 497 requests per second
+10000 Users and up to 497 requests per second. We were unable to reach 10000 requests per second (RPS) likely because we are on a lower tier cloud service. A higher tier would likely boost our RPS to a higher amount.
 ![alt text](images/locust.png)
 
 ## Preparation and Running
