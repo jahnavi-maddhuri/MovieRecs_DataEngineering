@@ -3,7 +3,7 @@
 
 [Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
 
-The purpose of this project is to create and use a microservice and build a web app (frontend made using Flask). The microservice was the Databricks. Performed load testing using Locust. Pushed local Docker container and image to AWS ECR and deployed on AppRunner. **make it sound better!!!!
+The purpose of this project is to create and use a microservice and build a web app (frontend made using Flask). The microservice was the Databricks. Performed load testing using Locust. Pushed local Docker container and image to AWS ECR and deployed on AppRunner. Utilized CI/CD so local changes to flask app and docker are reflected on the cloud. **make it sound better!!!!
 
 
 
