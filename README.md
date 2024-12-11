@@ -3,9 +3,11 @@
 
 [Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
 
-The purpose of this project is to create and use a microservice and build a web app (frontend made using Flask). The microservice was the Databricks. Performed load testing using Locust. Pushed local Docker container and image to AWS ECR and deployed on AppRunner. Utilized CI/CD so local changes to flask app and docker are reflected on the cloud. **make it sound better!!!!
+In this project we developed a movie recommendations application. The frontend was built on Flask and backend developed on Python. Our data was hosted on Databricks with the application containerized on Docker and deployed with AWS ECR and AppRunner. We then performed load testing using Locust. Our CI/CD is located within GitHub Actions.
 
+## Instructions 
 
+Enter in your name, select a movie genre from the dropdown menu, and type in a mood. 3 movie recommendations will be returned.
 
 ## Workflow
 * Extract data using API from movie site and load as a table into Databricks
