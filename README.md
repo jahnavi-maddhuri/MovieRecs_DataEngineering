@@ -1,5 +1,17 @@
 # MovieRecs_DataEngineering
+
+## CICD Badges:
 [![CICD](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml)
+
+[![IaC Setup](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml)
+
+[![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml)
+
+[![Lint](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml)
+
+[![Format](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml)
+
+[![Test](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml)
 
 [Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
 
