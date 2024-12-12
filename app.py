@@ -208,8 +208,8 @@ HTML_TEMPLATE = """
 
 def query(genre, mood):
     load_dotenv()
-    server_h = os.getenv("SERVER_HOSTNAME")
-    access_token = os.getenv("ACCESS_TOKEN")
+    server_h = os.getenv("DB_SERVER_HOSTNAME")
+    access_token = os.getenv("DB_ACCESS_TOKEN")
     # http_path = os.getenv("HTTP_PATH")
     with sql.connect(
         server_hostname=server_h,
