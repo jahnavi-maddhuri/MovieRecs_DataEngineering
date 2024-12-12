@@ -32,3 +32,12 @@ jobs:
         docker build -t movie-recs:latest .
         docker tag movie-recs:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
         docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
+    
+    - name: install packages
+      run: make install
+    - name: lint
+      run: make lint
+    - name: test
+      run: make test
+    - name: format
+      run: make format

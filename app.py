@@ -3,6 +3,7 @@ from flask import (
     request,
     render_template_string,
 )  # import query functions that we make
+
 from dotenv import load_dotenv
 import os
 
@@ -14,7 +15,6 @@ except Exception as e:
     print("Error while importing databricks.sql:")
     print(e)
     traceback.print_exc()
-
 
 app = Flask(__name__)
 
