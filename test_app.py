@@ -27,8 +27,6 @@ class FlaskAppTests(unittest.TestCase):
             'mood': 'Relaxed'
         })
         self.assertEqual(response.status_code, 200)
-        # self.assertIn(b'Hi Test User!', response.data)
-        # self.assertIn(b'Here are your movie recommendations:', response.data)
 
 
 class ExtractTests(unittest.TestCase):
@@ -61,8 +59,6 @@ class ExtractTests(unittest.TestCase):
         # Read the CSV file and check its content
         movie_pd = pd.read_csv(file_path)
         self.assertEqual(len(movie_pd), 499)
-        # self.assertEqual(movie_pd.iloc[0]['title'], 'Test Movie')
-        # self.assertEqual(movie_pd.iloc[0]['genre_names'], "['Action', 'Adventure']")
 
         # Clean up
         os.remove(file_path)

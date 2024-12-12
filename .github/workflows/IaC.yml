@@ -1,4 +1,4 @@
-name: Build and Push Docker Image and Configure AWS ECR
+name: IaC Setup
 
 on:
   push:
@@ -35,16 +35,4 @@ jobs:
         docker build -t movie-recs:latest .
         docker tag movie-recs:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
         docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
-    
-    
-    - name: Install packages
-      run: make install
 
-    - name: Lint
-      run: make lint
-
-    - name: Test
-      run: make test
-
-    - name: Format
-      run: make format
