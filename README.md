@@ -1,19 +1,14 @@
 # MovieRecs_DataEngineering
-
-## CICD Badges:
-[![IaC Setup](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml)
-
-[![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml)
-
-[![Lint](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml)
-
-[![Format](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml)
-
-[![Test](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml)
-
 [Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
 
 In this project we developed a movie recommendations application. The frontend was built on Flask and backend developed on Python. Our data was hosted on Databricks with the application containerized on Docker and deployed with AWS ECR and AppRunner. We then performed load testing using Locust. Our CI/CD is located within GitHub Actions.
+
+## CICD Badges:
+[![IaC Setup](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml)
+[![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml)
+[![Lint](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml)
+[![Format](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml)
+[![Test](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml)
 
 ## Architechitural Diagram
 
