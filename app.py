@@ -232,7 +232,6 @@ def query(genre, mood):
     return result
 
 
-# I think based on what the user inputs, we call our query functions using probably variables based on what the user requests. then get the output of the query and display it here?
 @app.route("/", methods=["GET", "POST"])
 def say_hello():
     if request.method == "POST":
