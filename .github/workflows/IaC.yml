@@ -35,4 +35,14 @@ jobs:
         docker build -t movie-recs:latest .
         docker tag movie-recs:latest ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
         docker push ${{ secrets.AWS_ID }}.dkr.ecr.us-east-2.amazonaws.com/movie-recs:latest
-
+        
+    - name: Configure Databricks Credentials
+      env:
+        DATABRICKS_HOST: ${{ secrets.DB_SERVER_HOSTNAME }}
+        DATABRICKS_TOKEN: ${{ secrets.DB_ACCESS_TOKEN }}
+      run: |
+        echo "Configuring Databricks credentials"
+        export DATABRICKS_HOST=$DATABRICKS_HOST
+        export DATABRICKS_TOKEN=$DATABRICKS_TOKEN
+      
+  
