@@ -5,9 +5,9 @@ In this project we developed a movie recommendations application. The frontend w
 
 ## CICD Badges:
 [![IaC Setup](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml) \
-[![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml)
-[![Lint](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml)
-[![Format](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml)
+[![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml) \
+[![Lint](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/lint.yml) \
+[![Format](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/format.yml) \
 [![Test](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/test.yml)
 
 ## Architechitural Diagram
