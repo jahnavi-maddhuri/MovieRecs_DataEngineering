@@ -1,8 +1,6 @@
 # MovieRecs_DataEngineering
 
 ## CICD Badges:
-[![CICD](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/cicd.yml)
-
 [![IaC Setup](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/IaC.yml)
 
 [![Install](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml/badge.svg)](https://github.com/jahnavi-maddhuri/MovieRecs_DataEngineering/actions/workflows/install.yml)
