@@ -208,8 +208,8 @@ HTML_TEMPLATE = """
 
 def query(genre, mood):
     load_dotenv()
-    server_h = os.getenv("SERVER_HOSTNAME")
-    access_token = os.getenv("ACCESS_TOKEN")
+    server_h = os.getenv("DB_SERVER_HOSTNAME")
+    access_token = os.getenv("DB_ACCESS_TOKEN")
     # http_path = os.getenv("HTTP_PATH")
     with sql.connect(
         server_hostname=server_h,
@@ -232,7 +232,6 @@ def query(genre, mood):
     return result
 
 
-# I think based on what the user inputs, we call our query functions using probably variables based on what the user requests. then get the output of the query and display it here?
 @app.route("/", methods=["GET", "POST"])
 def say_hello():
     if request.method == "POST":
