@@ -1,6 +1,7 @@
 # MovieRecs_DataEngineering
 
 Contributors: Atreya Tadepalli, Jahnavi Maddhuri, Jenny Chen, Fan Xu
+
 [Movie Recommendations App](https://ucqrm4zhtb.us-east-2.awsapprunner.com/)
 
 Youtube Demo: https://youtu.be/qCGuWaeAqQg
